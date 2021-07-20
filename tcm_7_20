@@ -1,0 +1,113 @@
+#include<stdio.h>
+void to_binary(int num);
+int main(void)
+{
+	int num;
+	printf("Enter a number to exchange(q to quit):");
+	while (scanf("%d", &num) == 1)
+	{
+		to_binary(num);
+		printf("\nEnter a number to exchange(q to quit):");
+	}
+	printf("Done!\n");
+	return 0;
+}
+void to_binary(int num)
+{
+	int r;
+	r = num % 2;
+	if (num >= 2)
+		to_binary(num / 2);
+	//putchar(r == 0 ? '0' : '1');
+	//printf("%c", r == 0 ? '0' : '1');//(0和1为字符，用%c)（%d会错误）
+	printf("%d", num % 2);
+	return;
+
+}
+int main()
+{
+	int a = 0;
+	printf("%d\n%p\n", a, a);
+	printf("%d\n%p", a, &a);
+	return 0;
+}
+double min(double x, double y);
+int main()
+{
+	double x, y;
+	scanf("%lf%lf", &x, &y);
+	printf("The min between two numbers is:%f\n", min(x, y));
+	return 0;
+}
+double min(double x, double y)
+{
+	return x > y ? y : x;
+}
+void chline(char a, int b, int c);
+int main()
+{
+	char ch;
+	int i, j;
+	printf("Enter a char to print:");
+	scanf("%c", &ch);
+	printf("Enter line and column:");
+	scanf("%d%d", &i, &j);
+	chline(ch, i, j);
+	return 0;
+}
+void chline(char a, int i, int j)
+{
+	int k, l;
+	for (l = 0; l < j; l++)
+	{
+		for (k = 0; k < i; k++)
+			printf("%c", a);
+		printf("\n");
+	}
+}
+double culculate(double x, double y);
+int main()
+{
+	double x, y;
+	printf("Enter two number to culculate Harmonic mean:");
+	scanf("%lf%lf", &x, &y);
+	printf("Harmonic mean is %f", culculate(x, y));
+	return 0;
+}
+double culculate(double x, double y)
+{
+	return 1 / ((1 / x + 1 / y) / 2);
+}
+double larger_of(double * x, double * y);  //指针法
+int main()
+{
+	double x, y;
+	printf("Enter two numbers and the bigger number will replace the others\n");
+	/*printf("\nx=");
+	scanf("%lf", &x);
+	printf("y=");
+	scanf("%lf", &y);*/
+	scanf("%lf%lf", &x, &y);
+	printf("x=%lf,y=%lf", x, y);
+	printf("Now,x=%lf,y=%lf", larger_of(&x, &y), larger_of(&x, &y));
+	return 0;
+}
+double larger_of(double * x, double * y)
+{
+	return *x > *y ? (*y=*x) : (*x=*y);
+}
+非指针
+double larger_of(double x, double y);
+int main()
+{
+	double x, y;
+	printf("Enter two numbers and the bigger number will replace the others\n");
+	scanf("%lf%lf", &x, &y);
+	printf("x=%lf.y=%lf", x, y);
+	printf("Now,x=%lf,y=%lf", larger_of(x, y), larger_of(x, y));
+	return 0;
+}
+double larger_of(double x, double y)
+{
+	return x > y ? x : y;
+}
